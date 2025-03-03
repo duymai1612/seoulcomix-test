@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { RestaurantGrid } from '@/components/restaurant/RestaurantGrid'
+import { CategoryTabs } from '@/components/restaurant/CategoryTabs'
+import { Search } from 'lucide-react'
 
 // Temporary mock data for testing
 const mockRestaurants = [
@@ -22,6 +24,7 @@ const mockRestaurants = [
 ]
 
 export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState('all')
   const [restaurants, setRestaurants] = useState(mockRestaurants)
 
   const handleFavoriteToggle = (id: string) => {
@@ -35,15 +38,25 @@ export default function Home() {
   }
 
   return (
-    <main className="container mx-auto py-8 px-4">
-      <div className="space-y-8">
-        <div>
-          <h1 className="text-2xl font-bold">Restaurants</h1>
-          <p className="text-slate-500 mt-1">
-            Discover and save your favorite restaurants
-          </p>
+    <main className="container mx-auto py-4 px-4">
+      <div className="space-y-6">
+        {/* Search Bar */}
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <input
+            type="text"
+            placeholder="맛집 이름을 검색해보세요"
+            className="w-full rounded-full border border-slate-200 bg-slate-50 py-2 pl-10 pr-4 text-sm placeholder:text-slate-400 focus:border-slate-300 focus:outline-none focus:ring-0"
+          />
         </div>
-        
+
+        {/* Category Tabs */}
+        <CategoryTabs
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+        />
+
+        {/* Restaurant Grid */}
         <RestaurantGrid 
           restaurants={restaurants} 
           onFavoriteToggle={handleFavoriteToggle} 

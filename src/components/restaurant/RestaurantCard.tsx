@@ -3,73 +3,61 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import { Heart } from "lucide-react"
+import { Restaurant } from "@/types/restaurant"
 
 interface RestaurantCardProps {
-  restaurant: {
-    name: string
-    desc: string
-    rating: number
-    rating_count: number
-    category: string
-    price_range: string
-    images: string[]
-    isFavorite: boolean
-  }
+  restaurant: Restaurant
   onFavoriteToggle: () => void
 }
 
 export function RestaurantCard({ restaurant, onFavoriteToggle }: RestaurantCardProps) {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden border-0 shadow-none">
       <div className="relative">
-        <AspectRatio ratio={16 / 9}>
+        <AspectRatio ratio={1.5}>
           <Image
             src={restaurant.images[0]}
             alt={restaurant.name}
             fill
-            className="object-cover"
+            className="object-cover rounded-2xl"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </AspectRatio>
         <Button
-          variant="secondary"
+          variant="ghost"
           size="icon"
-          className="absolute top-4 right-4 h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
+          className="absolute top-2 right-2 h-8 w-8 rounded-full bg-white/80 hover:bg-white/90"
           onClick={onFavoriteToggle}
         >
           <Heart
-            className={`h-4 w-4 ${
+            className={`h-5 w-5 ${
               restaurant.isFavorite ? "fill-red-500 text-red-500" : "text-slate-600"
             }`}
           />
         </Button>
       </div>
-      <CardContent className="p-4">
-        <h3 className="font-medium leading-none line-clamp-2">
+      <CardContent className="px-0 pt-3">
+        {restaurant.featured && (
+          <div className="flex items-center gap-1 text-orange-500 mb-1">
+            <span className="text-xs">⭐</span>
+            <span className="text-xs font-medium">{restaurant.featured.text}</span>
+          </div>
+        )}
+        <h3 className="font-medium text-base leading-tight line-clamp-2">
           {restaurant.name}
         </h3>
-        <div className="mt-2 flex items-center gap-2">
-          <div className="flex items-center">
-            <span className="text-yellow-500">★</span>
-            <span className="ml-1 text-sm font-medium">{restaurant.rating}</span>
-            <span className="ml-1 text-sm text-slate-500">
-              ({restaurant.rating_count})
-            </span>
-          </div>
-          <Badge variant="secondary" className="text-xs">
-            {restaurant.category}
-          </Badge>
+        <div className="mt-1 flex items-center gap-1 text-sm">
+          <span className="text-yellow-500">★</span>
+          <span className="font-medium">{restaurant.rating}</span>
+          <span className="text-slate-400">({restaurant.rating_count})</span>
         </div>
-        <p className="mt-2 text-sm text-slate-500 line-clamp-2">
+        <p className="mt-1 text-sm text-slate-600 line-clamp-2">
           {restaurant.desc}
         </p>
-        <div className="mt-3">
-          <span className="text-sm text-slate-500">
-            ¥{restaurant.price_range}만
-          </span>
+        <div className="mt-2 text-xs text-slate-500">
+          {restaurant.city} · {restaurant.category} · {restaurant.price_range}만원
         </div>
       </CardContent>
     </Card>
