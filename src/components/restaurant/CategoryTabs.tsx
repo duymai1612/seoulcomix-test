@@ -17,7 +17,7 @@ interface CategoryTabsProps {
 
 export function CategoryTabs({ selectedCategory, onSelectCategory }: CategoryTabsProps) {
   return (
-    <div className="flex gap-4 overflow-x-auto pb-2 -mb-2">
+    <div className="flex gap-4 overflow-x-auto pb-2">
       {categories.map((category) => (
         <button
           key={category.id}
