@@ -9,9 +9,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // Vercel Postgres connection string
-  directUrl = env("POSTGRES_URL_NON_POOLING") // Needed for migrations
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED") // Needed for migrations
 }
 
 model Restaurant {

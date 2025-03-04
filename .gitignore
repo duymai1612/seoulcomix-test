@@ -172,3 +172,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Prisma
+node_modules/.prisma
+!.env.example
+
+# Prisma - Do not ignore these
+# prisma/migrations/
+# prisma/schema.prisma
+# prisma/seed.ts
