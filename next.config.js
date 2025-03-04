@@ -20,7 +20,14 @@ const nextConfig = {
       : {}),
     optimizePackageImports: [],
     missingSuspenseWithCSRBailout: false,
-
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
   },
   eslint: {
     ignoreDuringBuilds: true,

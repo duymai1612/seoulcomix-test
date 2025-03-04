@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { Search } from 'lucide-react'
 import { RestaurantGrid } from '@/components/restaurant/RestaurantGrid'
 import { CategoryTabs } from '@/components/restaurant/CategoryTabs'
-import { Search } from 'lucide-react'
+import { Restaurant } from '@/types/restaurant'
 
 // Temporary mock data for testing
-const mockRestaurants = [
+const mockRestaurants: Restaurant[] = [
   {
     id: "4dc2e1d1-fe89-4a29-b86a-f8bb0ce1395d",
     rating: 4.2,
@@ -18,7 +19,8 @@ const mockRestaurants = [
     images: [
       "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ],
-    isFavorite: true
+    isFavorite: true,
+    city: "서울"
   },
   // Add more mock restaurants as needed
 ]
