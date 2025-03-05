@@ -4,10 +4,14 @@ import { cn } from "@/lib/utils"
 
 const categories = [
   { id: 'all', label: '전체' },
-  { id: 'sushi', label: '스시·해산물' },
-  { id: 'yakitori', label: '장어' },
-  { id: 'tempura', label: '텐푸라' },
-  { id: 'ramen', label: '라멘·츠케멘' }
+  { id: 'SUSHI', label: '스시·해산물' },
+  { id: 'UNAGI', label: '장어' },
+  { id: 'TEMPURA', label: '덴푸라' },
+  { id: 'TONKATSU', label: '돈카츠·쿠시카츠' },
+  { id: 'YAKITORI', label: '야키토리·꼬치' },
+  { id: 'SUKIYAKI', label: '스키야키·샤브샤브' },
+  { id: 'SOBA', label: '소바·우동' },
+  { id: 'RAMEN', label: '라멘·츠케멘' },
 ]
 
 interface CategoryTabsProps {

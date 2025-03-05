@@ -17,13 +17,13 @@ datasource db {
 model Restaurant {
   id           String   @id @default(uuid())
   name         String
-  description  String   @map("desc")
+  desc         String   // Changed from description
   rating       Float
-  ratingCount  Int      @map("rating_count")
+  rating_count Int      @map("rating_count")
   category     String
   city         String
   images       String[]
-  priceRange   String   @map("price_range")
+  price_range  String   @map("price_range")
   isFavorite   Boolean  @default(false)
   featured     Json?
   createdAt    DateTime @default(now())

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GeistSans } from 'geist/font'
+import Provider from './_trpc/Provider'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${GeistSans.className} antialiased`}>
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
