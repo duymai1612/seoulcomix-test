@@ -11,7 +11,9 @@ export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const utils = trpc.useContext()
   
-  const { data: restaurants, isLoading } = trpc.restaurant.getAll.useQuery<Restaurant[]>()
+  const { data: restaurants, isLoading } = trpc.restaurant.getAll.useQuery({
+    category: selectedCategory
+  })
 
   const toggleFavorite = trpc.restaurant.toggleFavorite.useMutation({
     onSuccess: () => {
@@ -35,19 +37,25 @@ export default function HomePage() {
         {/* Category Tabs */}
         <CategoryTabs
           selectedCategory={selectedCategory}
-          onSelectCategory={setSelectedCategory}
+          onSelectCategory={(category) => {
+            setSelectedCategory(category)
+            // Optionally prefetch the data for the new category
+            utils.restaurant.getAll.prefetch({ category })
+          }}
         />
 
         {/* Restaurant Grid */}
         {isLoading ? (
-          <div>Loading...</div>
-        ) : restaurants ? (
+          <div>로딩중...</div>
+        ) : restaurants && Array.isArray(restaurants) && restaurants.length > 0 ? (
           <RestaurantGrid 
             restaurants={restaurants} 
             onFavoriteToggle={(id) => toggleFavorite.mutate({ id })}
           />
         ) : (
-          <div>No restaurants found</div>
+          <div className="text-center text-slate-500 py-8">
+            검색 결과가 없습니다
+          </div>
         )}
       </div>
     </main>
