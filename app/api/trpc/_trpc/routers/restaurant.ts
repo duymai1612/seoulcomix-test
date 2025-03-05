@@ -4,9 +4,9 @@ import { Restaurant } from '@/types/restaurant';
 
 export const restaurantRouter = router({
   getAll: publicProcedure
-    .input(z.object({ 
+    .input(z.object({
       category: z.string().optional(),
-      search: z.string().optional() 
+      search: z.string().optional(),
     }).optional())
     .query(async ({ ctx, input }): Promise<Restaurant[]> => {
       return ctx.prisma.restaurant.findMany({
@@ -16,18 +16,23 @@ export const restaurantRouter = router({
             input?.category && input.category !== 'all'
               ? { category: input.category }
               : {},
-            // Search filter (can be implemented later)
+            // Search filter
             input?.search
               ? {
                   OR: [
                     { name: { contains: input.search, mode: 'insensitive' } },
                     { desc: { contains: input.search, mode: 'insensitive' } },
+                    { category: { contains: input.search, mode: 'insensitive' } },
+                    { city: { contains: input.search, mode: 'insensitive' } },
                   ],
                 }
               : {},
           ],
         },
-        orderBy: { rating: 'desc' }
+        orderBy: [
+          { rating: 'desc' },
+          { rating_count: 'desc' }
+        ],
       });
     }),
 

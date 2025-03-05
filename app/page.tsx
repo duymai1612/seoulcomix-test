@@ -1,19 +1,30 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Search } from 'lucide-react'
 import { RestaurantGrid } from '@/components/restaurant/RestaurantGrid'
 import { CategoryTabs } from '@/components/restaurant/CategoryTabs'
 import { trpc } from './_trpc/client'
 import { type Restaurant } from '@prisma/client'
+import debounce from 'lodash/debounce'
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
   const utils = trpc.useContext()
   
   const { data: restaurants, isLoading } = trpc.restaurant.getAll.useQuery({
-    category: selectedCategory
+    category: selectedCategory,
+    search: searchQuery
   })
+
+  // Debounce search to prevent too many API calls
+  const debouncedSearch = useCallback(
+    debounce((query: string) => {
+      setSearchQuery(query)
+    }, 300),
+    []
+  )
 
   const toggleFavorite = trpc.restaurant.toggleFavorite.useMutation({
     onSuccess: () => {
@@ -30,6 +41,7 @@ export default function HomePage() {
           <input
             type="text"
             placeholder="맛집 이름을 검색해보세요"
+            onChange={(e) => debouncedSearch(e.target.value)}
             className="w-full rounded-full border border-slate-200 bg-slate-50 py-2 pl-10 pr-4 text-sm placeholder:text-slate-400 focus:border-slate-300 focus:outline-none focus:ring-0"
           />
         </div>
