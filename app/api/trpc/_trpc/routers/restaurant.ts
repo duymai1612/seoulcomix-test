@@ -50,7 +50,7 @@ export const restaurantRouter = router({
         where: { id: input.id },
         data: { isFavorite: !restaurant?.isFavorite }
       })
-      
+
       return {
         ...updated,
         featured: updated.featured as Restaurant['featured']
