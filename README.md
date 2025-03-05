@@ -175,7 +175,7 @@ DATABASE_URL_UNPOOLED=your_production_database_direct_url
 ## Live Demo
 
 - **Demo URL**: [https://seoulcomix-test-neon.vercel.app/](https://seoulcomix-test-neon.vercel.app/)
-- **Demo Video**: [Link to demo video]()
+- **Demo Video**: [Link to demo video](https://drive.google.com/file/d/1cfZmV4tIx-tJCL0zLLBv9vq7pQyWnvcN/view?usp=sharing)
 
 ## Contributing
 
