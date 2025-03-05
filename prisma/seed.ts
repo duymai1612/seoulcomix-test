@@ -19,7 +19,7 @@ async function main() {
         name: "카구라자카 이시카와 스시하루 나카노시마 스시야",
         price_range: "3~5",
         images: [
-          "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
         featured: { text: "나카노시마×야키토리 상위 맛집" }
@@ -34,7 +34,7 @@ async function main() {
         name: "스시 긴자 이시카와",
         price_range: "4~6",
         images: [
-          "https://images.unsplash.com/photo-1547592180-2f1a1b3c3b68?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
         featured: { text: "도쿄의 상위 스시 맛집" }
@@ -49,7 +49,7 @@ async function main() {
         name: "라멘 이치란",
         price_range: "2~4",
         images: [
-          "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1632709810780-b5a4343cebec?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
         featured: { text: "교토의 라멘 명소" }
@@ -64,7 +64,7 @@ async function main() {
         name: "텐푸라 마츠야",
         price_range: "3~5",
         images: [
-          "https://images.unsplash.com/photo-1604908177732-40aa343c3f2b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
         featured: { text: "나고야 최고의 텐푸라집" }
@@ -79,7 +79,7 @@ async function main() {
         name: "우동 타로",
         price_range: "2~4",
         images: [
-          "https://images.unsplash.com/photo-1570544826585-8dd0cf1d2aa8?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1552611052-33e04de081de?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
         featured: { text: "후쿠오카 우동 맛집" }
@@ -94,7 +94,7 @@ async function main() {
         name: "야키토리 하치베",
         price_range: "1~3",
         images: [
-          "https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1519624014191-508652cbd7b5?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
         featured: { text: "오사카 야키토리 숨은 맛집" }
@@ -109,7 +109,7 @@ async function main() {
         name: "스시 사토",
         price_range: "4~6",
         images: [
-          "https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1563612116625-3012372fccce?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
         featured: { text: "삿포로 스시 맛집" }
@@ -124,7 +124,7 @@ async function main() {
         name: "라멘 타츠야",
         price_range: "2~4",
         images: [
-          "https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
         featured: { text: "히로시마 라멘 추천" }
@@ -139,7 +139,7 @@ async function main() {
         name: "텐푸라 야마구치",
         price_range: "5~7",
         images: [
-          "https://images.unsplash.com/photo-1610399220621-38b3599b57c2?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
         featured: { text: "요코하마 텐푸라 추천" }
@@ -154,7 +154,7 @@ async function main() {
         name: "우동 가게야마",
         price_range: "2~4",
         images: [
-          "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
         featured: { text: "고베 우동 맛집" }
