@@ -1,11 +1,11 @@
-import { prisma } from '@/lib/db';
-import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
+import { prisma } from '@/lib/db'
+import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 
 export async function createContext(opts: FetchCreateContextFnOptions) {
   return {
     prisma,
-    ...opts,
-  };
+    ...opts
+  }
 }
 
-export type Context = Awaited<ReturnType<typeof createContext>>; 
+export type Context = Awaited<ReturnType<typeof createContext>>

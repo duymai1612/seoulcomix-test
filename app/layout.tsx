@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font'
 import Provider from './_trpc/Provider'
-import "./globals.css";
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Restaurant App",
-  description: "A simple restaurant listing application"
-};
+  title: 'Restaurant App',
+  description: 'A simple restaurant listing application'
+}
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="ko">
@@ -19,5 +19,5 @@ export default function RootLayout({
         <Provider>{children}</Provider>
       </body>
     </html>
-  );
+  )
 }
