@@ -13,7 +13,7 @@ export const restaurantRouter = router({
         .optional()
     )
     .query(async ({ ctx, input }): Promise<Restaurant[]> => {
-      return ctx.prisma.restaurant.findMany({
+      const restaurants = await ctx.prisma.restaurant.findMany({
         where: {
           AND: [
             // Category filter
@@ -33,6 +33,11 @@ export const restaurantRouter = router({
         },
         orderBy: [{ rating: 'desc' }, { rating_count: 'desc' }]
       })
+
+      return restaurants.map(restaurant => ({
+        ...restaurant,
+        featured: restaurant.featured as Restaurant['featured']
+      }))
     }),
 
   toggleFavorite: publicProcedure
@@ -41,9 +46,14 @@ export const restaurantRouter = router({
       const restaurant = await ctx.prisma.restaurant.findUnique({
         where: { id: input.id }
       })
-      return ctx.prisma.restaurant.update({
+      const updated = await ctx.prisma.restaurant.update({
         where: { id: input.id },
         data: { isFavorite: !restaurant?.isFavorite }
       })
+
+      return {
+        ...updated,
+        featured: updated.featured as Restaurant['featured']
+      }
     })
 })

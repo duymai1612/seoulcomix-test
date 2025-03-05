@@ -249,6 +249,7 @@ You will be provided with a mock data set for the list of restaurants. This data
   ]
   ```
 - Categories
+
   ```tsx
   enum STORE_CATEGORY {
     SUSHI = 'SUSHI',
