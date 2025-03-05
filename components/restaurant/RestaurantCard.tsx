@@ -12,6 +12,17 @@ interface RestaurantCardProps {
   onFavoriteToggle: () => void
 }
 
+const FEATURED_ICONS = {
+  'stars-02': '⭐',
+  'trophy': '🏆',
+  'crown': '👑',
+  'diamond': '💎',
+  'fire': '🔥',
+  'new': '🆕',
+  'trending': '📈',
+  'default': '🔖'
+} as const;
+
 export function RestaurantCard({ restaurant, onFavoriteToggle }: RestaurantCardProps) {
   return (
     <Card className="group overflow-hidden border border-slate-200 rounded-2xl bg-white hover:shadow-[0_8px_12px_-4px_rgba(0,0,0,0.1)] transition-shadow duration-200">
@@ -39,7 +50,9 @@ export function RestaurantCard({ restaurant, onFavoriteToggle }: RestaurantCardP
       <CardContent className="p-4">
         {restaurant.featured && (
           <div className="flex items-center gap-1 text-orange-500 mb-1">
-            <span className="text-xs">⭐</span>
+            <span className="text-xs">
+              {FEATURED_ICONS[restaurant.featured.icon as keyof typeof FEATURED_ICONS] || FEATURED_ICONS.default}
+            </span>
             <span className="text-xs font-medium">{restaurant.featured.text}</span>
           </div>
         )}

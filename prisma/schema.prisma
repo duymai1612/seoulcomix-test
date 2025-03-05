@@ -25,7 +25,7 @@ model Restaurant {
   images       String[]
   price_range  String   @map("price_range")
   isFavorite   Boolean  @default(false)
-  featured     Json?
+  featured     Json?    @db.JsonB
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 

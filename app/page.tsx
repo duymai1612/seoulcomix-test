@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useCallback } from 'react'
-import { Search } from 'lucide-react'
-import { RestaurantGrid } from '@/components/restaurant/RestaurantGrid'
 import { CategoryTabs } from '@/components/restaurant/CategoryTabs'
-import { trpc } from './_trpc/client'
-import { type Restaurant } from '@prisma/client'
+import { RestaurantGrid } from '@/components/restaurant/RestaurantGrid'
 import debounce from 'lodash/debounce'
+import { Search } from 'lucide-react'
+import { useCallback, useState } from 'react'
+import { trpc } from './_trpc/client'
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState('all')

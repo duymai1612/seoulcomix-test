@@ -22,7 +22,10 @@ async function main() {
           "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
-        featured: { text: "나카노시마×야키토리 상위 맛집" }
+        featured: { 
+          text: "나카노시마×야키토리 상위 맛집",
+          icon: "crown" 
+        }
       },
       {
         id: "6ac3e2d1-ge98-5a29-c86a-g9cc1de2396d",
@@ -37,7 +40,10 @@ async function main() {
           "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
-        featured: { text: "도쿄의 상위 스시 맛집" }
+        featured: { 
+          text: "도쿄의 상위 스시 맛집",
+          icon: "stars-02" 
+        }
       },
       {
         id: "7bd4f3e2-hf98-6b39-d87b-h0dd2ee2397e",
@@ -52,7 +58,7 @@ async function main() {
           "https://images.unsplash.com/photo-1632709810780-b5a4343cebec?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
-        featured: { text: "교토의 라멘 명소" }
+        featured: { text: "교토의 라멘 명소", icon: 'trophy' }
       },
       {
         id: "8ce5g4f3-jg09-7c40-e98c-i1ee3ff3408f",
@@ -67,7 +73,7 @@ async function main() {
           "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
-        featured: { text: "나고야 최고의 텐푸라집" }
+        featured: { text: "나고야 최고의 텐푸라집", icon: 'diamond' }
       },
       {
         id: "9df6h5g4-kh10-8d41-f09d-j2ff4gg4519g",
@@ -82,7 +88,7 @@ async function main() {
           "https://images.unsplash.com/photo-1552611052-33e04de081de?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
-        featured: { text: "후쿠오카 우동 맛집" }
+        featured: { text: "후쿠오카 우동 맛집", icon: 'fire' }
       },
       {
         id: "0eg7i6h5-lj21-9e52-g10e-k3gg5hh5620h",
@@ -97,7 +103,7 @@ async function main() {
           "https://images.unsplash.com/photo-1519624014191-508652cbd7b5?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
-        featured: { text: "오사카 야키토리 숨은 맛집" }
+        featured: { text: "오사카 야키토리 숨은 맛집", icon: 'trending' }
       },
       {
         id: "1fh8j7i6-mk32-0f63-h11f-l4hh6ii6731i",
@@ -112,7 +118,7 @@ async function main() {
           "https://images.unsplash.com/photo-1563612116625-3012372fccce?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
-        featured: { text: "삿포로 스시 맛집" }
+        featured: { text: "삿포로 스시 맛집", icon: 'crown' }
       },
       {
         id: "2gi9k8j7-nl43-1g74-i22g-m5ii7jj7842j",
@@ -127,7 +133,7 @@ async function main() {
           "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
-        featured: { text: "히로시마 라멘 추천" }
+        featured: { text: "히로시마 라멘 추천", icon: 'fire' }
       },
       {
         id: "3hj0l9k8-om54-2h85-j33h-n6jj8kk8953k",
@@ -142,7 +148,7 @@ async function main() {
           "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=800&auto=format&fit=crop",
         ],
         isFavorite: true,
-        featured: { text: "요코하마 텐푸라 추천" }
+        featured: { text: "요코하마 텐푸라 추천", icon: 'trending' }
       },
       {
         id: "4ik1m0l9-pn65-3i96-k44i-o7kk9ll9064l",
@@ -157,7 +163,7 @@ async function main() {
           "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?w=800&auto=format&fit=crop",
         ],
         isFavorite: false,
-        featured: { text: "고베 우동 맛집" }
+        featured: { text: "고베 우동 맛집", icon: 'new' }
       }
     ] as unknown as Prisma.RestaurantCreateManyInput[]
   })
