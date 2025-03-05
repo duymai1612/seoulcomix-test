@@ -11,7 +11,9 @@ export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const utils = trpc.useContext()
   
-  const { data: restaurants, isLoading } = trpc.restaurant.getAll.useQuery<Restaurant[]>()
+  const { data: restaurants, isLoading } = trpc.restaurant.getAll.useQuery({
+    category: selectedCategory
+  })
 
   const toggleFavorite = trpc.restaurant.toggleFavorite.useMutation({
     onSuccess: () => {
@@ -35,19 +37,36 @@ export default function HomePage() {
         {/* Category Tabs */}
         <CategoryTabs
           selectedCategory={selectedCategory}
-          onSelectCategory={setSelectedCategory}
+          onSelectCategory={(category) => {
+            setSelectedCategory(category)
+            // Optionally prefetch the data for the new category
+            utils.restaurant.getAll.prefetch({ category })
+          }}
         />
 
         {/* Restaurant Grid */}
         {isLoading ? (
-          <div>Loading...</div>
-        ) : restaurants ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="rounded-lg bg-slate-100 animate-pulse">
+                <div className="h-48 bg-slate-200 rounded-t-lg" /> {/* Image */}
+                <div className="p-4 space-y-3">
+                  <div className="h-4 bg-slate-200 rounded w-3/4" /> {/* Title */}
+                  <div className="h-3 bg-slate-200 rounded w-1/2" /> {/* Description */}
+                  <div className="h-3 bg-slate-200 rounded w-1/4" /> {/* Rating */}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : restaurants && Array.isArray(restaurants) && restaurants.length > 0 ? (
           <RestaurantGrid 
             restaurants={restaurants} 
             onFavoriteToggle={(id) => toggleFavorite.mutate({ id })}
           />
         ) : (
-          <div>No restaurants found</div>
+          <div className="text-center text-slate-500 py-8">
+            검색 결과가 없습니다
+          </div>
         )}
       </div>
     </main>
