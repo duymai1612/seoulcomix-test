@@ -46,7 +46,18 @@ export default function HomePage() {
 
         {/* Restaurant Grid */}
         {isLoading ? (
-          <div>로딩중...</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="rounded-lg bg-slate-100 animate-pulse">
+                <div className="h-48 bg-slate-200 rounded-t-lg" /> {/* Image */}
+                <div className="p-4 space-y-3">
+                  <div className="h-4 bg-slate-200 rounded w-3/4" /> {/* Title */}
+                  <div className="h-3 bg-slate-200 rounded w-1/2" /> {/* Description */}
+                  <div className="h-3 bg-slate-200 rounded w-1/4" /> {/* Rating */}
+                </div>
+              </div>
+            ))}
+          </div>
         ) : restaurants && Array.isArray(restaurants) && restaurants.length > 0 ? (
           <RestaurantGrid 
             restaurants={restaurants} 
