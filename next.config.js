@@ -19,18 +19,18 @@ const nextConfig = {
         }
       : {}),
     optimizePackageImports: [],
-    missingSuspenseWithCSRBailout: false,
+    missingSuspenseWithCSRBailout: false
   },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-    ],
+        hostname: 'images.unsplash.com'
+      }
+    ]
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true
   },
   webpack(config, { isServer }) {
     config.module.rules.push({

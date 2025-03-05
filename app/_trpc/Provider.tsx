@@ -11,9 +11,9 @@ export default function Provider({ children }: { children: React.ReactNode }) {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: '/api/trpc',
-        }),
-      ],
+          url: '/api/trpc'
+        })
+      ]
     })
   )
 
@@ -22,4 +22,4 @@ export default function Provider({ children }: { children: React.ReactNode }) {
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </trpc.Provider>
   )
-} 
+}

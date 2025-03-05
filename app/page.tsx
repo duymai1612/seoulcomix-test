@@ -1,24 +1,36 @@
 'use client'
 
-import { useState } from 'react'
-import { Search } from 'lucide-react'
-import { RestaurantGrid } from '@/components/restaurant/RestaurantGrid'
 import { CategoryTabs } from '@/components/restaurant/CategoryTabs'
+import { RestaurantGrid } from '@/components/restaurant/RestaurantGrid'
+import debounce from 'lodash/debounce'
+import { Search } from 'lucide-react'
+import { useCallback, useState } from 'react'
 import { trpc } from './_trpc/client'
-import { type Restaurant } from '@prisma/client'
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
   const utils = trpc.useContext()
-  
+
   const { data: restaurants, isLoading } = trpc.restaurant.getAll.useQuery({
-    category: selectedCategory
+    category: selectedCategory,
+    search: searchQuery
   })
+
+  const debouncedSearch = useCallback(
+    (query: string) => {
+      const debouncedFn = debounce((value: string) => {
+        setSearchQuery(value)
+      }, 300)
+      debouncedFn(query)
+    },
+    [setSearchQuery]
+  )
 
   const toggleFavorite = trpc.restaurant.toggleFavorite.useMutation({
     onSuccess: () => {
       utils.restaurant.getAll.invalidate()
-    },
+    }
   })
 
   return (
@@ -30,6 +42,7 @@ export default function HomePage() {
           <input
             type="text"
             placeholder="맛집 이름을 검색해보세요"
+            onChange={e => debouncedSearch(e.target.value)}
             className="w-full rounded-full border border-slate-200 bg-slate-50 py-2 pl-10 pr-4 text-sm placeholder:text-slate-400 focus:border-slate-300 focus:outline-none focus:ring-0"
           />
         </div>
@@ -37,7 +50,7 @@ export default function HomePage() {
         {/* Category Tabs */}
         <CategoryTabs
           selectedCategory={selectedCategory}
-          onSelectCategory={(category) => {
+          onSelectCategory={category => {
             setSelectedCategory(category)
             // Optionally prefetch the data for the new category
             utils.restaurant.getAll.prefetch({ category })
@@ -59,14 +72,9 @@ export default function HomePage() {
             ))}
           </div>
         ) : restaurants && Array.isArray(restaurants) && restaurants.length > 0 ? (
-          <RestaurantGrid 
-            restaurants={restaurants} 
-            onFavoriteToggle={(id) => toggleFavorite.mutate({ id })}
-          />
+          <RestaurantGrid restaurants={restaurants} onFavoriteToggle={id => toggleFavorite.mutate({ id })} />
         ) : (
-          <div className="text-center text-slate-500 py-8">
-            검색 결과가 없습니다
-          </div>
+          <div className="text-center text-slate-500 py-8">검색 결과가 없습니다</div>
         )}
       </div>
     </main>
