@@ -9,6 +9,7 @@
     "format": "prettier --write .",
     "lint": "next lint && prettier --check .",
     "lint:fix": "next lint --fix && prettier --write .",
+    "prepare": "node .husky/install.mjs",
     "db:seed": "prisma db seed"
   },
   "dependencies": {
