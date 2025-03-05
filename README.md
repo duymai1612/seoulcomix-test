@@ -15,6 +15,7 @@ A modern restaurant discovery application built with Next.js, tRPC, and Prisma. 
 ## Tech Stack
 
 - **Frontend**:
+
   - Next.js 14 (App Router)
   - React 18
   - TailwindCSS for styling
@@ -22,6 +23,7 @@ A modern restaurant discovery application built with Next.js, tRPC, and Prisma. 
   - TypeScript for type safety
 
 - **Backend**:
+
   - tRPC for type-safe APIs
   - Prisma as ORM
   - PostgreSQL database
@@ -43,17 +45,20 @@ A modern restaurant discovery application built with Next.js, tRPC, and Prisma. 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/your-username/restaurant-app.git
 cd restaurant-app
 ```
 
 2. Install dependencies:
+
 ```bash
 yarn install
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp .env.example .env
 ```
@@ -61,12 +66,14 @@ cp .env.example .env
 4. Configure your environment variables in `.env`
 
 5. Initialize the database:
+
 ```bash
 yarn prisma migrate dev
 yarn db:seed
 ```
 
 6. Start the development server:
+
 ```bash
 yarn dev
 ```
@@ -97,6 +104,7 @@ restaurant-app/
 ### tRPC Restaurant Procedures
 
 - `getAll`: Retrieve all restaurants
+
   - Optional filters: category, search
   - Returns: Restaurant[]
 
@@ -127,16 +135,19 @@ We use several tools to ensure code quality:
 ### Database Management
 
 1. Create a new migration:
+
 ```bash
 yarn prisma migrate dev --name migration_name
 ```
 
 2. Reset database and seed:
+
 ```bash
 yarn prisma migrate reset
 ```
 
 3. Update Prisma client:
+
 ```bash
 yarn prisma generate
 ```
